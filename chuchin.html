@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--<script src="js/jquery.js"></script>-->
+     
+    <title>Proyecto</title>
+</head>
+<body>
+    <div class="containter-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h1>Tecnológico de Monterrey</h1>
+                    <hr>
+                <h3>Sistema para evaluar proyectos</h3>
+                <h6>Evaluación y administración de proyectos</h6>
+            </div>
+            <div class="col-4 text-center">
+                <form action="" class="evaluador">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre del proyecto: </label>
+                        <input type="text" class="form-control" id="nombreProyectoInput" placeholder="Nombre del proyecto">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre del evaluador: </label>
+                        <input type="text" class="form-control" id = "NombreEvaluadorInput" placeholder="Nombre del evaluador">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <!--TABS DEL MENU-->
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pbp-tab" data-toggle="tab" href="#pbp" role="tab" aria-controls="pbp" aria-selected="true">PayBack Period</a>
+                    </li>
+                    
+                    <!--<li class="nav-item">
+                        <a class="nav-link " id="pbp-result-tab" data-toggle="tab" href="#pbp-result" role="tab" aria-controls="pbp-result" aria-selected="false">PayBack Period Result</a>
+                    </li>-->
+                    
+                                        
+                    <li class="nav-item">
+                        <a class="nav-link" id="npv-tab" data-toggle="tab" href="#npv" role="tab" aria-controls="npv" aria-selected="false">NPV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="dep-tab" data-toggle="tab" href="#dep" role="tab" aria-controls="dep" aria-selected="false">Depreciation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="psm-tab" data-toggle="tab" href="#psm" role="tab" aria-controls="psm" aria-selected="false">Project Screening Method</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="cl-tab" data-toggle="tab" href="#cl" role="tab" aria-controls="cl" aria-selected="false">Check List</a>
+                    </li>
+                </ul>
+
+                <!--CONTENIDO DE LOS TABS-->
+                <div class="tab-content" id="myTabContent">
+
+                    <!--CONTENIDO DEL TAB PBP-->
+                    <!--
+                        FUNCIONALIDADES POR FALTAR
+
+                        * VALIDAR EL INPUT DE TASA DE INTERES
+                        * VALIDAR EL INPUT DE LA TABLA
+                        * FUNCIONALIDAD DEL BOTÓN "BORRAR DATOS"
+                        * MANDAR DATOS AL SERVIDOR
+
+                    -->
+                    <div class="tab-pane fade show active" id="pbp" role="tabpanel" aria-labelledby="pbp-tab">
+                        <br>
+                        <p class="alert-info">Descripción del Discounted Payback Period...</p>
+                        
+                        <!--FORM PARA LOS DATOS DEL PBP-->
+                        <form>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for = "no-periods-pbp" class="col-4 col-form-label">Seleccione # de periodos: </label>
+                                        <div class="col-2 col-form-label">
+                                            <select class="form-control form-control-sm no-periods-pbp" id="no-periods-pbp" name="no-periods-pbp">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+
+                                        <label for="interes-pbp" class="col-4 col-form-label">Tasa de Interes (%): </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="number" class="form-control form-control-sm" id="interes-pbp" name="interes-pbp">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="principal-pbp" class="col-4 col-form-label">Principal: </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="text" class="form-control form-control-sm" id="principal-pbp" name="principal-pbp">
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-10 col-form-label">
+                                    
+                                    <!--TABLA PARA DATOS PBP-->
+                                    <table class="table table-striped" id="table-pbp">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Outflows</th>
+                                                <th>Inflows</th>
+                                                <th>Cummulative</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-content-pbp">
+                                            <tr>
+                                                <td>1</td>
+                                                <td><input type="number" id="pbp-out-1" onchange="addCashFlow(1)" name="pbp-out-1"></td>
+                                                <td><input type="number" id="pbp-inf-1" onchange="addCashFlow(1)" name="pbp-inf-1"></td>
+                                                <td><input type="number" id="pbp-cum-1" value="" name="pbp-cum-1" readonly="true"></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-8 col-form-label">
+                                    <!--FALTA ACTIVAR LA FUNCIONALIDAD DEL BOTÓN DE BORRAR DATOS-->
+                                    <button type="button" onclick="" class="form-control btn btn-secondary mb-2">Borrar datos</button>
+                                    
+                                    <button type="button" class="form-control btn btn-primary mb-2" onclick="calcularPBP()">Calcular</button>
+                       
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+                                <hr>
+                                <h3 id="header-resultado-pbp"></h3>
+                                <hr>
+                                <table class="table table-striped" id="table-pbp-result">
+                                    <thead class="thead-light" id="table-content-pbp-head">
+                                        <!--<tr>
+                                            <th>Periodo</th>
+                                            <th>Cashflow</th>
+                                            <th>Cost funds</th>
+                                            <th>Cummulative Cash Flow</th>
+                                        </tr>-->
+                                    </thead>
+                                    <tbody id="table-content-pbp-result">
+                                        <!--<tr>
+                                            <td>1</td>
+                                            <td><input type="number" id="pbp-out-1" onchange="addCashFlow(1)" name="pbp-out-1"></td>
+                                            <td><input type="number" id="pbp-inf-1" onchange="addCashFlow(1)" name="pbp-inf-1"></td>
+                                            <td><input type="number" id="pbp-cum-1" value="" name="pbp-cum-1" readonly="true"></td>
+                                            
+                                        </tr>-->
+        
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <!--CONTENIDO DEL TAB NPV-->
+                    <!--
+                        FUNCIONALIDADES POR FALTAR
+
+                        * VALIDAR EL INPUT DE TASA DE INTERES Y TAX
+                        * VALIDAR EL INPUT DE LA TABLA
+                        * FUNCIONALIDAD DEL BOTÓN "BORRAR DATOS"
+                        * MANDAR DATOS AL SERVIDOR
+
+                    -->
+                    <div class="tab-pane fade" id="npv" role="tabpanel" aria-labelledby="npv-tab">
+                        <br>
+                        <p class="alert-info">Descripción del Net Present Value...</p>
+                        
+                        <!--FORM PARA LOS DATOS DEL PBP-->
+                        <form action="URL/servidor" method="POST">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for = "no-periods-npv" class="col-4 col-form-label">Seleccione # de periodos: </label>
+                                        <div class="col-2 col-form-label">
+                                            <select class="form-control form-control-sm no-periods-npv" id="no-periods-npv" name="no-periods-npv">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+
+                                        <label for="interes-npv" class="col-4 col-form-label">Tasa de Interes (%): </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="number" class="form-control form-control-sm" id="interes-npv" name="interes-npv">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="principal-npv" class="col-4 col-form-label">Principal: </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="text" class="form-control form-control-sm" id="principal-npv" name="principal-npv">
+                                        </div>  
+
+                                        <label for="taxrate-npv" class="col-4 col-form-label">Tax Rate(%): </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="text" class="form-control form-control-sm" id="taxrate-npv" name="taxrate-npv">
+                                        </div>                                        
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="salvage-npv" class="col-4 col-form-label">Salvage value: </label>
+                                        <div class="col-2 col-form-label">
+                                            <input type="text" class="form-control form-control-sm" id="salvage-npv" name="salvage-npv">
+                                        </div>  
+
+                                        <label for="salvage-period-npv" class="col-4 col-form-label">S. Value Period: </label>
+                                        <div class="col-2 col-form-label">
+                                            <select class="form-control form-control-sm salvage-period-npv" id="salvage-period-npv" name="salvage-period-npv">
+                                                <option>1</option>
+                                            </select>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-10 col-form-label">
+                                    
+                                    <!--TABLA PARA DATOS NPV-->
+                                    <table class="table table-striped" id="table-npv">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Outflows</th>
+                                                <th>Inflows</th>
+                                                <th>Net</th>
+                                                <th>Comulative</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-content-npv">
+                                            <tr>
+                                                <td>1</td>
+                                                <td><input type="number" id="npv-out-1" name="npv-out-1"></td>
+                                                <td><input type="number" id="npv-inf-1" name="npv-inf-1"></td>
+                                                <td><input type="number" id="npv-net-1" name="npv-net-1" readonly="true"></td>
+                                                <td><input type="number" id="npv-com-1" name="npv-com-1" readonly="true"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <label for="npv-total" class="col-4 col-form-label">NPV total: </label>
+                                    <div class="col-2 col-form-label">
+                                        <input type="number" class="form-control form-control-sm" id="npv-total" name="npv-total">
+                                    </div>
+                                </div>
+                                <div class="col-8 col-form-label">
+                                    <!--FALTA ACTIVAR LA FUNCIONALIDAD DEL BOTÓN DE BORRAR DATOS-->
+                                    <button type="button" onclick="" class="form-control btn btn-secondary mb-2">Borrar datos</button>
+                                    <button type="submit" onclick="calculoNPV()" class="form-control btn btn-primary mb-2">Calcular</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--CONTENIDO DEL TAB DEP-->
+                    <div class="tab-pane fade" id="dep" role="tabpanel" aria-labelledby="dep-tab">Depreciation</div>
+
+                    <!--CONTENIDO DEL TAB PSM-->
+                    <div class="tab-pane fade" id="psm" role="tabpanel" aria-labelledby="psm-tab">Project Screneing Method</div>
+
+                    <!--CONTENIDO DEL TAB CL-->
+                    <div class="tab-pane fade" id="cl" role="tabpanel" aria-labelledby="cl-tab">Check list</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+         * SCRIPTS PARA EL MANEJO DINÁMICO
+         *
+         * 
+         * SE USA JQUERY/JS PARA EL MANEJO DEL DOM Y DATOS  
+        */
+
+
+        /*
+         * FUNCIÓN PARA EL CAMBIO DE LA TABLA DE "PBP" DEPENDIENDO DEL NÚMERO DE PERIODOS SELECCIONADOS
+        */
+        $('select.no-periods-pbp').change(function(){
+            deleteChildsElement("table-content-pbp");
+
+            var html = "";
+
+            var number_periods = $('select.no-periods-pbp').val();
+            for(var i = 1; i <= number_periods; i++){
+                html += "<tr>";
+                html += "<td>"+i+"</td>";
+                html += "<td><input type='number' id='pbp-out-"+i+"' onchange='addCashFlow("+i+")' name='pbp-out-"+i+"'></td>";
+                html += "<td><input type='number' id='pbp-inf-"+i+"' onchange='addCashFlow("+i+")' name='pbp-inf-"+i+"'></td>";
+                html += "<td><input type='number' id='pbp-cum-"+i+"' name='pbp-cum-"+i+"' readonly='true'></td>";
+                html += "</tr>";
+            }
+            $("#table-content-pbp").append(html);
+        });
+        
+        
+        /*
+         * FUNCIÓN PARA MOSTRAR EN UNA TABLA EL CALCULO DEL PBP
+        */
+        function calcularPBP(){
+            
+            //deleteChildsElement("table-content-pbp-result");
+
+            var html = "";
+
+            var number_periods = document.getElementById("no-periods-pbp").value;
+                    
+            var interest = document.getElementById("interes-pbp").value;
+            
+            var principal = document.getElementById("principal-pbp").value;
+            
+            var cashflow, cummulative_cashflow, cost_funds;
+            var i;
+            var paybackPeriod = "No se recupera la inversion en el periodo previsto";
+            
+            html = "Resultado:";
+            document.getElementById("header-resultado-pbp").innerHTML = html;
+
+            html = "<tr><th>Periodo</th><th>Cashflow</th><th>Cost funds</th><th>Cummulative Cash Flow</th</tr>";
+            document.getElementById("table-content-pbp-head").innerHTML = html;
+                
+            html = "";
+
+            for(i = 0; i <= number_periods; i++){
+                
+
+                if(i == 0){
+                    cashflow = -principal;
+                    cummulative_cashflow = cashflow;
+                    cost_funds = 0;
+                }
+                
+                else{
+                    
+                    cashflow = document.getElementById("pbp-cum-"+i).value;
+                    
+                    if(cashflow == null)
+                        cashflow = 0;
+                    
+                    cost_funds = cummulative_cashflow  * (interest/100);
+                    cummulative_cashflow = parseFloat(cummulative_cashflow) +  parseFloat(cost_funds) + parseFloat(cashflow);
+                }
+                
+                if(cummulative_cashflow >= 0)
+                    paybackPeriod = "El payback period es de " + i;
+                
+                //alert("i = " + i + "CASH =  " + cashflow + " COST = " + cost_funds  + " CUMM =  " + cummulative_cashflow);
+                
+                html += "<tr>";
+                html += "<td>"+i+"</td>";
+                html += "<td><input type='number' id='pbp-cashflow-"+i+"' name='pbp-cashflow-"+i+"' value = "+cashflow+" readonly='true'></td>";
+                html += "<td><input type='number' id='pbp-cost-funds-"+i+"' name='pbp-cost-funds-"+i+"' value = "+cost_funds+" readonly='true'></td>";
+                html += "<td><input type='number' id='pbp-cum-cash-"+i+"' name='pbp-cum-cash-"+i+"' value = "+cummulative_cashflow+" readonly='true'></td>";
+                html += "</tr>";
+            }
+            //$("table-content-pbp-result").append(html);
+            
+            document.getElementById("table-content-pbp-result").innerHTML = html;
+            //var result = document.getElementById("table-content-pbp-result").innerHTML;
+            
+            document.getElementById("periodo-pbp").innerHTML = paybackPeriod;
+        
+            //alert(html);
+           
+        }
+
+
+        /*
+         * FUNCIÓN PARA EL CAMBIO DE LA TABLA DE "NPV" DEPENDIENDO DEL NÚMERO DE PERIODOS SELECCIONADOS
+         * 
+         * TAMBIEN CAMBIA EL SELECT DEL PERIODO DEL SALVAGE
+         * 
+        */
+        $('select.no-periods-npv').change(function(){
+            deleteChildsElement("table-content-npv");
+
+            var html = "";
+
+            var number_periods = $('select.no-periods-npv').val();
+            for(var i = 1; i <= number_periods; i++){
+                html += "<tr>";
+                html += "<td>"+i+"</td>";
+                html += "<td><input type='number' id='npv-out-"+i+"' name='npv-out-"+i+"'></td>";
+                html += "<td><input type='number' id='npv-inf-"+i+"' name='npv-inf-"+i+"'></td>";
+                html += "<td><input type='number' id='npv-net-"+i+"' name='npv-net-"+i+"' readonly='true'></td>";
+                html += "<td><input type='number' id='npv-cum-"+i+"' name='npv-com-"+i+"' readonly='true'></td>";
+                html += "</tr>";
+            }
+
+            $("#table-content-npv").append(html);
+
+            
+            deleteChildsElement("salvage-period-npv");
+            html = "";
+            for(var i = 1; i <= number_periods; i++){
+                html += "<option>"+i+"</option>";
+            }
+
+            $("#salvage-period-npv").append(html);
+        });
+
+
+        /*
+         * FUNCIÓN PARA BORRAR LOS HIJOS DEL ELEMENTO ESPECIFICADO
+         * 
+         * @PARAMS  nombre - ID del elemento a eliminar
+        */
+        function deleteChildsElement(nombre){
+            var element = document.getElementById(nombre);
+            while (element.hasChildNodes()) {
+                element.removeChild(element.lastChild);
+            }  
+        }
+        
+        /*
+         * FUNCIÓN PARA CALCULAR INFLOWS Y OUTFLOWS DE MANERA DINÁMICA DEL PBP
+         * 
+         * @PARAMS id - numero del periodo
+        */
+        function addCashFlow(id){
+            var inflow = 0;
+            var outflow = 0;
+
+            inflow = document.getElementById('pbp-inf-'+id).value;
+            outflow = document.getElementById('pbp-out-'+id).value;
+
+            if(inflow != null && outflow != null){                                                            
+                document.getElementById("pbp-cum-"+id).value = inflow - outflow;
+            }
+        }
+
+        function calculoNPV(){
+            var principal=document.getElementById("principal-npv").value;
+            var tasa=document.getElementById("interes-npv").value;
+            var rate=document.getElementById("taxrate-npv").value;
+            var salvage=document.getElementById("salvage-npv").value;
+
+            //obtener periodos
+            var lista = document.getElementById("no-periods-npv");
+            var periods = lista.options[lista.selectedIndex].text;
+
+            //obtener periodods del salvage value
+            var lista2 = document.getElementById("salvage-period-npv");
+            var periods2 = lista2.options[lista.selectedIndex].text;
+
+            //periodo 1
+            var outflow = document.getElementById("npv-out-1").value;
+            var inflow = document.getElementById("npv-inf-1").value;
+            var outflow1=parseInt(outflow)+parseInt(principal);
+            document.getElementById("npv-out-1").value=outflow1;
+            var net=inflow-outflow1;
+            document.getElementById("npv-net-1").value=net;
+
+            //comulative periodo 1
+            var comul1=(-principal*tasa)+parseInt(-principal);
+            document.getElementById("npv-com-1").value=comul1;
+
+            var npv2=0;
+            //sacar net cahs
+            for(var i = 2; i <= periods; i++){
+                var inflow = document.getElementById("npv-inf-"+i+"").value;
+                var outflow = document.getElementById("npv-out-"+i+"").value;
+                if(i == periods2){
+                    inflow=parseFloat(inflow)+parseFloat(salvage);
+                    document.getElementById("npv-inf-"+i+"").value=inflow;
+                }
+
+                var net=inflow-outflow;
+                document.getElementById("npv-net-"+i+"").value=net;
+
+                //calcuar npv por periodo
+                var denominador=parseInt(1)+parseFloat(rate);
+                var npv=(net*(1-tasa))/Math.pow(denominador,(i-1));
+                var comul=document.getElementById("npv-com-"+(i-1)+"").value;
+                comul=parseFloat(comul)+parseFloat(npv);
+                document.getElementById("npv-com-"+i+"").value=comul;
+                var npv2=parseFloat(npv2)+parseFloat(npv);
+            }
+
+            npv2=parseFloat(npv2)+parseFloat(comul1);
+            document.getElementById("npv-total").value=npv2;
+        }
+    </script>
+</body>
+</html>
